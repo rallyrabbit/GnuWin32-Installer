@@ -12,6 +12,11 @@
 
 ;--------------------------------
 
+; Baselines
+!define INSTALLSIZE 28507
+!define VERS "v1.1"
+!define PRODUCT "GnuWin32"
+
 ; The name of the installer
 Name "CAO/GNU GnuWin32 Installer"
 
@@ -72,10 +77,18 @@ Section "" ;No components page, name is not important
 
   ; Create the 32-bit register area stuff for Add/Remove programs
   SetRegView 32
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "DisplayName" "CAO GNUWin32"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "DisplayVersion" "1.0"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "DisplayName" "${PRODUCT}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "DisplayVersion" "${VERS}"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "Publisher" "Adam Oldham/GNU"
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "UninstallString" '"$INSTDIR\uninstall.exe"'
+
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "QuietUninstallString" "$\"$INSTDIR\uninstall.exe$\" /S"
+  ; There is no option for modifying or repairing the install
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "NoModify" 1
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "NoRepair" 1
+  # Set the INSTALLSIZE constant (!defined at the top of this script) so Add/Remove Programs can accurately report the size
+  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\CAO-GNUWin32" "EstimatedSize" ${INSTALLSIZE}
+
 
   ; Set Envar Plugin to HKey Current User in Registry
   EnVar::SetHKCU
