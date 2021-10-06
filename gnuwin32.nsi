@@ -14,7 +14,7 @@
 
 ; Baselines
 !define INSTALLSIZE 28507
-!define VERS "v1.1"
+!define VERS "v1.2"
 !define PRODUCT "GnuWin32"
 
 ; The name of the installer
