@@ -1,5 +1,11 @@
 # GnuWin32 Installer
 
+<div align="center"><p>
+    <a href="https://github.com/rallyrabbit/GnuWin32-Installer/releases/latest">
+      <img alt="Latest release" src="https://img.shields.io/github/v/release/rallyrabbit/GnuWin32-Installer" />
+    </a>
+</p></div>
+
 ## About
 This tool uses the GnuWin32 project at http://gnuwin32.sourceforge.net/packages.html.  This project utilizes https://www.gnu.org/licenses/gpl-3.0.html as noted here at http://gnuwin32.sourceforge.net/faq.html#Id_like_to_redistribute_pre-compiled_packages_from_GnuWin32.  Each package has it's own license as this project utilizes each package individually jsut to give a standard installer.
 
